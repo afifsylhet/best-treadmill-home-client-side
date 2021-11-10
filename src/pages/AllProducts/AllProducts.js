@@ -1,20 +1,13 @@
 
-import React, { useEffect, useState } from 'react';
+import { useProduct } from '../../utilities/useProduct'
+import React from 'react';
 import { Row } from 'react-bootstrap';
-import SelectedProduct from '../../SelectedProduct/SelectedProduct';
+import SelectedProduct from '../SelectedProduct/SelectedProduct';
 
-const Products = () => {
-    const [products, setProducts] = useState([]);
+const AllProducts = () => {
+    const [products] = useProduct();
+    console.log(products)
 
-
-    useEffect(() => {
-        const url = 'http://localhost:5000/products';
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
-
-    const newProduct = products.slice(0, 6)
 
     return (
         <div>
@@ -25,7 +18,7 @@ const Products = () => {
             </div>
             <div className="m-3">
                 <Row xs={1} md={1} lg={2}>
-                    {newProduct.map(product => <SelectedProduct
+                    {products.map(product => <SelectedProduct
                         key={product._id}
                         product={product}
                     ></SelectedProduct>)
@@ -36,4 +29,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default AllProducts;

@@ -19,7 +19,7 @@ const Navigation = () => {
 
                         <Nav.Link as={Link} to="/about" className="text-white">About</Nav.Link>
 
-                        <Nav.Link as={Link} to="/product/:id" className="text-white">Products</Nav.Link>
+                        <Nav.Link as={Link} to="/products" className="text-white">Products</Nav.Link>
 
                         <Nav.Link as={Link} to="/dashboard" className="text-white">Dashboard</Nav.Link>
 

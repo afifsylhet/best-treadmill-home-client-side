@@ -2,13 +2,22 @@
 
 import React from 'react';
 import Banner from '../Banner/Banner';
+import Faq from '../Faq/Faq';
+import Products from '../Products/Products';
+import Reviews from '../Reviews/Reviews';
 
 const MotherHome = () => {
     return (
-        <div>
+        <div className="bg-light">
             <Banner></Banner>
-            <h1>This is from Mother Home</h1>
-        </div>
+
+            <div className="mx-1">
+                <Products></Products>
+                <Reviews></Reviews>
+                <Faq></Faq>
+            </div>
+
+        </div >
     );
 };
 

@@ -13,6 +13,9 @@ import Product from './pages/Product/Product';
 import Error from './pages/Error/Error';
 import MotherHome from './pages/home/MohterHome/MotherHome';
 import Contact from './pages/Contact/Contact';
+import SingleProduct from './pages/home/SingleProduct/SingleProduct';
+import Products from './pages/home/Products/Products';
+import AllProducts from './pages/AllProducts/AllProducts';
 
 
 function App() {
@@ -36,8 +39,11 @@ function App() {
         <Route path="/contact">
           <Contact></Contact>
         </Route>
+        <Route path="/products">
+          <AllProducts></AllProducts>
+        </Route>
         <Route path="/product/:id">
-          <Product></Product>
+          <SingleProduct></SingleProduct>
         </Route>
         <Route path="*">
           <Error></Error>
