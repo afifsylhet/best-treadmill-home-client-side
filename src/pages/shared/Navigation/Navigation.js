@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     return (
@@ -14,18 +15,22 @@ const Navigation = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1" className="text-white">Home</Nav.Link>
-                        <Nav.Link href="#action1" className="text-white">About</Nav.Link>
-                        <Nav.Link href="#action2" className="text-white">Products</Nav.Link>
-                        <Nav.Link href="#action2" className="text-white">Deshboard</Nav.Link>
-                        <Nav.Link href="#action2" className="text-white">Contact</Nav.Link>
+                        <Nav.Link as={Link} to="/home" className="text-white">Home</Nav.Link>
+
+                        <Nav.Link as={Link} to="/about" className="text-white">About</Nav.Link>
+
+                        <Nav.Link as={Link} to="/product/:id" className="text-white">Products</Nav.Link>
+
+                        <Nav.Link as={Link} to="/dashboard" className="text-white">Dashboard</Nav.Link>
+
+                        <Nav.Link as={Link} to="/contact" className="text-white">Contact</Nav.Link>
 
                         <Button variant="outline-light" style={{ maxWidth: "130px" }}>Login</Button>
 
-                    </Nav>
+                    </Nav >
 
-                </Navbar.Collapse>
-            </Container>
+                </Navbar.Collapse >
+            </Container >
         </Navbar >
     );
 };
