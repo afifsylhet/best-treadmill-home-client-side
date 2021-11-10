@@ -15,8 +15,6 @@ const products = [
         glance_5: "Pause function - Press the stop button once to stop the belt and pause your run while keeping your current data and running stats intact",
         glance_6: "large LCD display and smart phone/tablet holder"
     },
-
-
     {
         sl: 2,
         name: "Sunny Health & Fitness SF-T7603 Electric Treadmill",
@@ -33,7 +31,6 @@ const products = [
         glance_5: "9 built-in user programs with 3 adjustable levels of incline",
         glance_6: "Product extent: 62L x 27W x 47H inches"
     },
-
     {
         sl: 3,
         name: "Sunny Health & Fitness SF-T7514 Heavy Duty Walking Treadmill",
@@ -50,7 +47,6 @@ const products = [
         glance_5: "Extra wide heavy duty walking treadmill",
         glance_6: "Easy folding for storage "
     },
-
     {
         sl: 4,
         name: "ProForm ZT6 Treadmill",
@@ -67,7 +63,6 @@ const products = [
         glance_5: "Grip Pulse EKG Heart Rate Monitor",
         glance_6: "This Treadmill belongs to a Lifetime Frame Warranty, 25-Year Motor Warranty and 1-Year Parts & Labor Warranty"
     },
-
     {
         sl: 5,
         name: "ProForm Pro 2000 Treadmill",
@@ -84,7 +79,6 @@ const products = [
         glance_5: "2.5 Precision Machined and Balanced Non-Flex Rear Roller,  Cool Aire Workout Fan",
         glance_6: "friendly iFit Live Technology "
     },
-
     {
         sl: 6,
         name: "ProForm Performance 300i Treadmill",
@@ -101,7 +95,6 @@ const products = [
         glance_5: "Large 41 x 127 cm running area, an incline range of 0 - 10% ",
         glance_6: "2 Year parts and labour, 5 year motor, Lifetime frame guarantee"
     },
-
     {
         sl: 7,
         name: "ProForm ZT8 Treadmill",
@@ -111,14 +104,13 @@ const products = [
         ourRatings: 3.50,
         price: 499,
         dis: "ProForm ZT8 Treadmill has never been as rewarding as it is with the ProForm ZT6 Treadmill. This Treadmill has an extra smooth 2.50-HP motor with a ProShox lite Cushioning Deck and digital quick speed electronics with incline adjust from 0-10 MPH and it is designed to give you the workout you'd pay to get at the gym – and more. The 6-inch backlit LCD display provides your time, distance, and speed so you can keep track of your progress. ",
-        glance_1: "2.75 CHP Mach Z Motor, 20" x 60" 2-Ply ",
+        glance_1: "2.75 CHP Mach Z Motor, 20 x 60 2-Ply ",
         glance_2: "22 Workout Apps, CoolAire Workout Fan, Grip Pulse EKG Heart Rate Monitor, 325 Lb. Weight Capacity",
         glance_3: "IFit Compatible; Requires iFit wireless module; sold separately; Buy an iFit wireless module and receive a free one-year iFit subscription",
         glance_4: "Space Saver Design with Easy Lift Assist",
         glance_5: "Compatible Music Port for iPod, ",
         glance_6: "The ProForm? ZT8 Treadmill is protected with a Lifetime Frame & Motor, 2-Year Parts and 1-Year Labor Warranty"
     },
-
     {
         sl: 8,
         name: "ProForm Performance 400i Treadmill",
@@ -135,7 +127,6 @@ const products = [
         glance_5: "Compatible music port for IPod, IPod is a trademark of Apple, inc, registered in the US And other countries; IPod not included",
         glance_6: "The ProForm performance 400 Treadmill is protected with a Lifetime frame Warranty, 25-year motor Warranty and 1-Year parts and Labor Warranty"
     },
-
     {
         sl: 9,
         name: "NordicTrack C 1650 Treadmill",
@@ -152,7 +143,6 @@ const products = [
         glance_5: " Ditch your ear buds for incredible sound from dual 2-inch speakers, 34 workout Apps.Get professional training with 34 preloaded  workouts designed by certified personal trainers",
         glance_6: "Choose from calorie, heart rate Control, incline, and speed workout programs"
     },
-
     {
         sl: 10,
         name: "Sole Fitness S77 Non-Folding Treadmill",
@@ -169,7 +159,6 @@ const products = [
         glance_5: "Deck measures 30 by 80 inches (W x D)",
         glance_6: "Choose from calorie, heart rate Control, incline, and speed workout programs"
     },
-
     {
         sl: 11,
         name: "LifeSpan TR4000i Folding Treadmill",
@@ -186,7 +175,6 @@ const products = [
         glance_5: "Speed range of 0.5 to 12 mph, ",
         glance_6: "Lifetime frame and motor warranty; 5 year parts; 1 year labor warranty"
     },
-
     {
         sl: 13,
         name: "Confidence Fitness Magnetic Manual Treadmill",
@@ -297,8 +285,6 @@ const products = [
         glance_3: "Speed: 0 to 12 MPH, ",
         glance_4: "Acoustic chambered speakers for big sound",
         glance_5: " 3.0 CHP motor, ",
-        glance_6: "Soft Drop folding system, "
-    },
-
-
-]
+        glance_6: "Soft Drop folding system"
+    }
+];
