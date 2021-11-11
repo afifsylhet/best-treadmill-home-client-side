@@ -2,8 +2,10 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../utilities/useAuth';
 
 const Navigation = () => {
+    const { handleSignout, user } = useAuth();
     return (
         <Navbar bg="primary" expand="lg">
             <Container fluid>
@@ -25,7 +27,16 @@ const Navigation = () => {
 
                         <Nav.Link as={Link} to="/contact" className="text-white">Contact</Nav.Link>
 
-                        <Button variant="outline-light" style={{ maxWidth: "130px" }}>Login</Button>
+                        <Nav.Link className="text-white">{user?.email?.split("@")[0]}</Nav.Link>
+
+                        {
+                            (user.email) ?
+                                <Button onClick={handleSignout} variant="outline-light" style={{ maxWidth: "130px" }}>Log Out</Button>
+                                : <Link to='/login'>
+                                    <Button variant="outline-light" style={{ maxWidth: "130px" }}>Login</Button>
+                                </Link>
+                        }
+
 
                     </Nav >
 

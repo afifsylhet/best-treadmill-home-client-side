@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { useParams } from 'react-router-dom';
@@ -14,6 +14,46 @@ const SingleProduct = (props, product) => {
     const { id } = useParams();
     const [products] = useProduct();
     const myProduct = products?.find(product => product._id === id)
+
+    const phoneRef = useRef(0)
+    const addressRef = useRef("")
+
+
+
+
+    const handleConfirmOrder = async (e) => {
+        const phone = phoneRef.current.value;
+        const address = addressRef.current.value;
+
+        const order = myProduct;
+        // order.email = user.email;
+        order.status = "Painding";
+        order.quantity = 1;
+        order.phone = phone;
+        order.address = address;
+        delete order._id
+
+        console.log(order)
+
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    console.log(data)
+                    alert("Your Order Received, Thank you")
+                }
+            })
+        e.target.reset();
+        e.preventDefault();
+        handleClose()
+    }
+
+
+
     return (
         <div className="container">
             <br />
@@ -65,10 +105,13 @@ const SingleProduct = (props, product) => {
                         </div>
                     </div>
                 </Col>
+
+
                 {/* Modal */}
+
                 <>
                     <Button className="py-2 mx-2 fs-5" variant="success" onClick={handleShow}>
-                        By This Treadmill
+                        Buy This Treadmill
                     </Button>
 
                     <Modal
@@ -78,18 +121,33 @@ const SingleProduct = (props, product) => {
                         keyboard={false}
                     >
                         <Modal.Header closeButton>
-                            <Modal.Title>Modal title</Modal.Title>
+                            <Modal.Title>Please fill those input field carefully</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            I will not close if you click outside me. Don't even try to press
-                            escape key.
+                            <form onSubmit={handleConfirmOrder}>
+                                <div className="input-group mb-3">
+                                    <span className="input-group-text" id="basic-addon1">Product: </span>
+                                    <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value={myProduct?.name} disabled />
+                                </div>
+                                <div className="input-group mb-3">
+                                    <span className="input-group-text" id="basic-addon1"> Price: </span>
+                                    <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value={myProduct?.price} disabled />
+                                </div>
+                                <div className="input-group mb-3">
+                                    <span className="input-group-text" id="basic-addon1"> Phone Number: </span>
+                                    <input type="number" className="form-control" placeholder="Type your phone number" aria-label="Username" aria-describedby="basic-addon1" required ref={phoneRef} />
+                                </div>
+                                <div className="input-group mb-3">
+                                    <span className="input-group-text" id="basic-addon1"> Address: </span>
+                                    <input type="text" className="form-control" placeholder="Type your shipping address" aria-label="Username" aria-describedby="basic-addon1" required ref={addressRef} />
+                                </div>
+
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
+                                </Button>
+                                <Button type="submit" variant="primary" className="ms-5" >Confirm Purchase</Button>
+                            </form>
                         </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Close
-                            </Button>
-                            <Button variant="primary">Understood</Button>
-                        </Modal.Footer>
                     </Modal>
                 </>
 
