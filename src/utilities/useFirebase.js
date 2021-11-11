@@ -13,6 +13,7 @@ const useFirebase = () => {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confrimValue, setConfrimValue] = useState("");
 
 
     const [user, setUser] = useState({});
@@ -21,6 +22,47 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
+    const getNameValue = (e) => {
+        const nameValue = e?.target.value;
+        setUserName(nameValue)
+    }
+    const getEmailValue = (e) => {
+        const emailValue = e?.target.value;
+        setEmail(emailValue)
+    }
+    const getPasswordValue = (e) => {
+        const passwordValue = e?.target.value;
+        setPassword(passwordValue)
+    }
+
+    const getConfirmValue = (e) => {
+        const confirmValue = e?.target.value;
+        setConfrimValue(confirmValue)
+    }
+
+    const createObject = () => {
+        const hello = {};
+        hello.name = userName;
+        hello.email = email;
+        hello.password = password;
+        hello.confirmValue = confrimValue;
+        return hello;
+    }
+
+
+    const passwordSignIn = () => {
+        setIsLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+
+    }
+
+
+
+    const signUpWithEmail = () => {
+        setIsLoading(true)
+
+        return createUserWithEmailAndPassword(auth, email, password, userName)
+    }
 
     const handleSignout = () => {
         setIsLoading(true)
@@ -33,54 +75,18 @@ const useFirebase = () => {
     }
 
 
-    const passwordSignIn = () => {
-        setIsLoading(true)
-        signInWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                const user = result.user;
-                setUser(user);
-                setError("")
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                setError(errorMessage)
-            })
-            .finally(() => setIsLoading(false));
-
-
-    }
-
-
-
-    const signUpWithEmail = () => {
-        setIsLoading(true)
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                const user = result.user;
-                setUser(user)
-                setError("")
-                console.log(user)
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                setError(errorMessage)
-            })
-            .finally(() => setIsLoading(false));
-
-    }
-
-
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
-                setError("")
             } else {
                 setUser({})
             }
             setIsLoading(false);
         })
+
     }, [auth]);
+
 
 
 
@@ -93,13 +99,13 @@ const useFirebase = () => {
         setIsLoading,
         isLoading,
         signUpWithEmail,
+        getNameValue,
+        getEmailValue,
+        getPasswordValue,
         passwordSignIn,
-        userName,
         setUserName,
-        email,
-        setEmail,
-        password,
-        setPassword
+        getConfirmValue,
+        createObject
     }
 
 };
