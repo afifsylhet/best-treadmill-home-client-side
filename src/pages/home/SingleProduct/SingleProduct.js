@@ -3,9 +3,12 @@ import React, { useRef, useState } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { useParams } from 'react-router-dom';
+import useAuth from '../../../utilities/useAuth';
 import useProduct from '../../../utilities/useProduct';
 
 const SingleProduct = (props, product) => {
+    const { user } = useAuth();
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -26,7 +29,7 @@ const SingleProduct = (props, product) => {
         const address = addressRef.current.value;
 
         const order = myProduct;
-        // order.email = user.email;
+        order.email = user.email;
         order.status = "Painding";
         order.quantity = 1;
         order.phone = phone;

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import './Login.css'
 import { useAuth } from '../../utilities/useAuth'
 import { Form } from 'react-bootstrap';
@@ -7,13 +7,16 @@ import { Form } from 'react-bootstrap';
 
 const Login = () => {
     const { user, setUser, setIsLoading, passwordSignIn, getEmailValue, getPasswordValue, setError, error } = useAuth();
-
+    const location = useLocation();
+    const history = useHistory();
+    const redirectUrl = location.state?.from || '/home';
 
     const signInbyPassword = (e) => {
         passwordSignIn()
             .then((result) => {
                 const user = result.user;
                 setUser(user)
+                history.push(redirectUrl)
             })
             .catch((error) => {
                 const errorMessage = error.message;

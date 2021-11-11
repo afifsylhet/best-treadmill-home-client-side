@@ -105,7 +105,9 @@ const useFirebase = () => {
         passwordSignIn,
         setUserName,
         getConfirmValue,
-        createObject
+        createObject,
+        password,
+        confrimValue
     }
 
 };

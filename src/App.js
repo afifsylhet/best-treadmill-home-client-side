@@ -17,6 +17,7 @@ import AllProducts from './pages/AllProducts/AllProducts';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AuthProvider from './utilities/AuthProvider';
+import PrivateRoute from './utilities/PrivateRoute';
 
 
 function App() {
@@ -35,18 +36,18 @@ function App() {
           <Route path="/about">
             <About></About>
           </Route>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route path="/contact">
             <Contact></Contact>
           </Route>
           <Route path="/products">
             <AllProducts></AllProducts>
           </Route>
-          <Route path="/product/:id">
+          <PrivateRoute path="/product/:id">
             <SingleProduct></SingleProduct>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login></Login>
           </Route>

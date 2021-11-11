@@ -1,17 +1,21 @@
 import './Register.css'
-import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import { useAuth } from '../../utilities/useAuth';
 
 const Register = () => {
-    const { setUser, setIsLoading, signUpWithEmail, getNameValue, getEmailValue, getPasswordValue, getConfirmValue, setError, error, createObject } = useAuth();
+    const { setUser, setIsLoading, signUpWithEmail, getNameValue, getEmailValue, getPasswordValue, getConfirmValue, setError, error, createObject, password, confrimValue } = useAuth();
 
     const signUpByEmail = (e) => {
+        if (password !== confrimValue) {
+            e.preventDefault()
+            return alert('password not mached, please try again')
+        }
         signUpWithEmail()
             .then((result) => {
                 const user = result.user;
                 setUser(user)
+                setError("")
                 console.log(user)
             })
             .catch((error) => {
@@ -19,8 +23,23 @@ const Register = () => {
                 setError(errorMessage)
             })
             .finally(() => setIsLoading(false));
+
         const userForBackEnd = createObject();
-        console.log(userForBackEnd)
+
+        if (!error) {
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userForBackEnd)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        console.log(data)
+                        alert(" Congratulations!!! Your account created and data saved to database.")
+                    }
+                })
+        }
         e.preventDefault()
         e.target.reset();
     }
@@ -29,8 +48,9 @@ const Register = () => {
         <div>
             <br />
 
-            <div className="width border border-success p-2">
-                <div>
+            <div className="width ">
+                {{ error } && <p className="bg-warning p-3">{error}</p>}
+                <div className=" border border-success p-2">
                     < p className="fs-4" > Create Account with Email</p>
                     <Form onSubmit={signUpByEmail}>
                         <div className="mb-3">
@@ -65,7 +85,7 @@ const Register = () => {
 
                     <hr />
                     <NavLink to="/login">
-                        <h5 className="text-success text-center" style={{ textDecoration: "none" }}>Already have an Account? Please Login</h5>
+                        <h5 className="text-success text-center" style={{ textDecoration: "none" }}>Already have an Account?Please Login</h5>
                     </NavLink>
 
                 </div>
