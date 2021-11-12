@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import useAuth from '../../../utilities/useAuth';
+// import useAuth from '../../../utilities/useAuth';
 import OffCanvas from '../OffCanvas/OffCanvas';
 
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
 
-    const { user } = useAuth();
+    // const { user } = useAuth();
 
     useEffect(() => {
         fetch("http://localhost:5000/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [orders]);
+    }, []);
 
 
 
@@ -54,7 +54,7 @@ const ManageOrders = () => {
 
 
     return (
-        <div> <h2 className="text-center my-2 text-success"> My Order Section</h2>
+        <div> <h2 className="text-center my-2 text-success"> Manage All Order Section</h2>
             <div className="text-center m-3">
                 <OffCanvas></OffCanvas>
             </div>
@@ -66,7 +66,7 @@ const ManageOrders = () => {
                             <Col>
                                 <p>User Name</p>
                                 <hr />
-                                <p>{user.email.split("@")[0]}</p>
+                                <p>{order.email.split("@")[0]}</p>
                             </Col>
                             <Col>
                                 <p>Product Name</p>

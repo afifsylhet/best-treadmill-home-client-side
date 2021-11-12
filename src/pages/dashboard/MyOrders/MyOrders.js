@@ -14,7 +14,7 @@ const MyOrders = () => {
         fetch("http://localhost:5000/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [orders]);
+    }, []);
 
     const myOrders = orders?.filter(order => order.email === user.email);
     console.log(myOrders)

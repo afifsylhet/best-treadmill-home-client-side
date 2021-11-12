@@ -51,6 +51,7 @@ const SingleProduct = (props, product) => {
                     alert("Your Order Received, Thank you")
                 }
             })
+        window.location.reload();
         e.target.reset();
         e.preventDefault();
         handleClose()
