@@ -34,6 +34,7 @@ const SingleProduct = (props, product) => {
         order.quantity = 1;
         order.phone = phone;
         order.address = address;
+        order.status = "Pending"
         delete order._id
 
         console.log(order)

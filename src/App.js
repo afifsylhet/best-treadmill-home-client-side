@@ -18,6 +18,13 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AuthProvider from './utilities/AuthProvider';
 import PrivateRoute from './utilities/PrivateRoute';
+import Pay from './pages/dashboard/Pay/Pay';
+import MyOrders from './pages/dashboard/MyOrders/MyOrders';
+import ReviewD from './pages/dashboard/ReviewD/ReviewD';
+import ManageOrders from './pages/dashboard/ManageOrders/ManageOrders';
+import AddProduct from './pages/dashboard/AddProduct/AddProduct';
+import MakeAdmin from './pages/dashboard/MakeAdmin/MakeAdmin';
+import ManageProducts from './pages/dashboard/ManageProducts/ManageProducts';
 
 
 function App() {
@@ -36,9 +43,49 @@ function App() {
           <Route path="/about">
             <About></About>
           </Route>
+
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
+
+
+          <PrivateRoute path="/payment">
+            <Pay></Pay>
+          </PrivateRoute>
+
+
+          <PrivateRoute path="/myorder">
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+
+
+          <PrivateRoute path="/reviewd">
+            <ReviewD></ReviewD>
+          </PrivateRoute>
+
+
+          <PrivateRoute path="/manageOrder">
+            <ManageOrders></ManageOrders>
+          </PrivateRoute>
+
+
+          <PrivateRoute path="/addProduct">
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+
+
+          <PrivateRoute path="/makeAdmin">
+            <MakeAdmin></MakeAdmin>
+          </PrivateRoute>
+
+
+          <PrivateRoute path="/manageProduct">
+            <ManageProducts></ManageProducts>
+          </PrivateRoute>
+
+
+
+
           <Route path="/contact">
             <Contact></Contact>
           </Route>
