@@ -46,6 +46,7 @@ const useFirebase = () => {
         hello.email = email;
         hello.password = password;
         hello.confirmValue = confrimValue;
+        hello.role = "User";
         return hello;
     }
 
