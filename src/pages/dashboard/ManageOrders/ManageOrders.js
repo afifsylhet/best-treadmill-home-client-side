@@ -10,7 +10,7 @@ const ManageOrders = () => {
     // const { user } = useAuth();
 
     useEffect(() => {
-        fetch("http://localhost:5000/orders")
+        fetch("https://serene-fortress-61222.herokuapp.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []);
@@ -23,7 +23,7 @@ const ManageOrders = () => {
         var result = window.confirm("Are you sure to delete?");
         if (result) {
             const exists = orders.find(pd => pd._id === order._id);
-            fetch('http://localhost:5000/orders', {
+            fetch('https://serene-fortress-61222.herokuapp.com/orders', {
                 method: 'delete',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(exists)
@@ -41,7 +41,7 @@ const ManageOrders = () => {
     const approveOrder = (order) => {
         const exists = orders.find(pd => pd._id === order._id);
         console.log(exists)
-        const url = 'http://localhost:5000/orders';
+        const url = 'https://serene-fortress-61222.herokuapp.com/orders';
         fetch(url, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },

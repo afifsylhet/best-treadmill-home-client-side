@@ -25,6 +25,7 @@ import ManageOrders from './pages/dashboard/ManageOrders/ManageOrders';
 import AddProduct from './pages/dashboard/AddProduct/AddProduct';
 import MakeAdmin from './pages/dashboard/MakeAdmin/MakeAdmin';
 import ManageProducts from './pages/dashboard/ManageProducts/ManageProducts';
+import AdminRoute from './utilities/AdminRoute';
 
 
 function App() {
@@ -64,27 +65,24 @@ function App() {
           </PrivateRoute>
 
 
-          <PrivateRoute path="/manageOrder">
+          <AdminRoute path="/manageOrder">
             <ManageOrders></ManageOrders>
-          </PrivateRoute>
+          </AdminRoute>
 
 
-          <PrivateRoute path="/addProduct">
+          <AdminRoute path="/addProduct">
             <AddProduct></AddProduct>
-          </PrivateRoute>
+          </AdminRoute>
 
 
-          <PrivateRoute path="/makeAdmin">
+          <AdminRoute path="/makeAdmin">
             <MakeAdmin></MakeAdmin>
-          </PrivateRoute>
+          </AdminRoute>
 
 
-          <PrivateRoute path="/manageProduct">
+          <AdminRoute path="/manageProduct">
             <ManageProducts></ManageProducts>
-          </PrivateRoute>
-
-
-
+          </AdminRoute>
 
           <Route path="/contact">
             <Contact></Contact>

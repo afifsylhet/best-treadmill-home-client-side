@@ -15,6 +15,8 @@ const useFirebase = () => {
     const [password, setPassword] = useState("");
     const [confrimValue, setConfrimValue] = useState("");
 
+    const [admin, setAdmin] = useState([]);
+
 
     const [user, setUser] = useState({});
     const [error, setError] = useState("");
@@ -88,7 +90,14 @@ const useFirebase = () => {
 
     }, [auth]);
 
+    useEffect(() => {
+        fetch("https://serene-fortress-61222.herokuapp.com/users")
+            .then(res => res.json())
+            .then(data => setAdmin(data))
+    }, [])
 
+
+    const isAdmin = admin.find(ad => ad.email === user.email)
 
 
     return {
@@ -108,7 +117,9 @@ const useFirebase = () => {
         getConfirmValue,
         createObject,
         password,
-        confrimValue
+        confrimValue,
+        admin,
+        isAdmin
     }
 
 };

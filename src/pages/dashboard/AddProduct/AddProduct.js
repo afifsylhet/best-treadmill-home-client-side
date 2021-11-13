@@ -37,7 +37,7 @@ const AddProduct = () => {
 
         console.log(newProduct)
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://serene-fortress-61222.herokuapp.com/products', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newProduct)
