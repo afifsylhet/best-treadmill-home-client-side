@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     // const { user } = useAuth();
 
     useEffect(() => {
-        fetch("https://serene-fortress-61222.herokuapp.com/users")
+        fetch("http://localhost:5000/users")
             .then(res => res.json())
             .then(data => setUsers(data))
     }, []);
@@ -22,7 +22,7 @@ const MakeAdmin = () => {
     const makeAdminFunc = (order) => {
         const exists = users.find(pd => pd._id === order._id);
         console.log(exists)
-        const url = 'https://serene-fortress-61222.herokuapp.com/users';
+        const url = 'http://localhost:5000/users';
         fetch(url, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },

@@ -39,7 +39,7 @@ const SingleProduct = (props, product) => {
 
         console.log(order)
 
-        fetch('https://serene-fortress-61222.herokuapp.com/orders', {
+        fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(order)
@@ -51,9 +51,9 @@ const SingleProduct = (props, product) => {
                     alert("Your Order Received, Thank you")
                 }
             })
-        window.location.reload();
         e.target.reset();
         e.preventDefault();
+        // window.location.reload();
         handleClose()
     }
 

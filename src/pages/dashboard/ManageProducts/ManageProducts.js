@@ -8,7 +8,7 @@ const ManageProducts = () => {
 
 
     useEffect(() => {
-        fetch("https://serene-fortress-61222.herokuapp.com/products")
+        fetch("http://localhost:5000/products")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
@@ -21,7 +21,7 @@ const ManageProducts = () => {
         var result = window.confirm("Are you sure to delete?");
         if (result) {
             const exists = products.find(pd => pd._id === product._id);
-            fetch('https://serene-fortress-61222.herokuapp.com/products', {
+            fetch('http://localhost:5000/products', {
                 method: 'delete',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(exists)

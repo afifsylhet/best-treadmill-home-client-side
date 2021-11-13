@@ -6,7 +6,7 @@ export const useProduct = () => {
 
 
     useEffect(() => {
-        fetch("https://serene-fortress-61222.herokuapp.com/products")
+        fetch("http://localhost:5000/products")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

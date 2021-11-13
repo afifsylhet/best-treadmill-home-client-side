@@ -26,6 +26,7 @@ import AddProduct from './pages/dashboard/AddProduct/AddProduct';
 import MakeAdmin from './pages/dashboard/MakeAdmin/MakeAdmin';
 import ManageProducts from './pages/dashboard/ManageProducts/ManageProducts';
 import AdminRoute from './utilities/AdminRoute';
+import Footer from './pages/shared/Footer/Footer';
 
 
 function App() {
@@ -103,6 +104,7 @@ function App() {
             <Error></Error>
           </Route>
         </Switch>
+        <Footer></Footer>
       </Router>
     </AuthProvider>
   );

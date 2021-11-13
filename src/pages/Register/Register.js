@@ -27,7 +27,7 @@ const Register = () => {
         const userForBackEnd = createObject();
 
         if (!error) {
-            fetch('https://serene-fortress-61222.herokuapp.com/users', {
+            fetch('http://localhost:5000/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userForBackEnd)

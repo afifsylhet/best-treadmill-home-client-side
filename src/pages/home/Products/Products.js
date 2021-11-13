@@ -8,7 +8,7 @@ const Products = () => {
 
 
     useEffect(() => {
-        const url = 'https://serene-fortress-61222.herokuapp.com/products';
+        const url = 'http://localhost:5000/products';
         fetch(url)
             .then(res => res.json())
             .then(data => setProducts(data))

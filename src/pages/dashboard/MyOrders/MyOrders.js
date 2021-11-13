@@ -11,7 +11,7 @@ const MyOrders = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch("https://serene-fortress-61222.herokuapp.com/orders")
+        fetch("http://localhost:5000/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []);
@@ -25,7 +25,7 @@ const MyOrders = () => {
         var result = window.confirm("Are you sure to delete?");
         if (result) {
             const exists = myOrders.find(pd => pd._id === order._id);
-            fetch('https://serene-fortress-61222.herokuapp.com/orders', {
+            fetch('http://localhost:5000/orders', {
                 method: 'delete',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(exists)

@@ -9,7 +9,7 @@ const Reviews = () => {
     console.log(reviews)
 
     useEffect(() => {
-        const url = 'https://serene-fortress-61222.herokuapp.com/reviews';
+        const url = 'http://localhost:5000/reviews';
         fetch(url)
             .then(res => res.json())
             .then(data => setreviews(data))
