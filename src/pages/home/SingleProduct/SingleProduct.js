@@ -39,7 +39,7 @@ const SingleProduct = (props, product) => {
 
         console.log(order)
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://serene-fortress-61222.herokuapp.com/orders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(order)

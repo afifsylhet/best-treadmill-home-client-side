@@ -91,7 +91,7 @@ const useFirebase = () => {
     }, [auth]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("https://serene-fortress-61222.herokuapp.com/users")
             .then(res => res.json())
             .then(data => setAdmin(data))
     }, [])
