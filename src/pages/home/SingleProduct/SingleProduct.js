@@ -2,21 +2,31 @@
 import React, { useRef, useState } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
-import { useParams } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import useAuth from '../../../utilities/useAuth';
 import useProduct from '../../../utilities/useProduct';
 
-const SingleProduct = (props, product) => {
+const SingleProduct = (props) => {
     const { user } = useAuth();
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+
+
+    const location = useLocation();
+    const history = useHistory();
+    const redirectUrl = location.state?.from || '/products';
+
+
+
+    const handleClose = (e) => {
+        setShow(false);
+    }
     const handleShow = () => setShow(true);
 
     const { id } = useParams();
     const [products] = useProduct();
-    const myProduct = products?.find(product => product._id === id)
+    let myProduct = products?.find(product => product._id === id)
 
     const phoneRef = useRef(0)
     const addressRef = useRef("")
@@ -25,6 +35,9 @@ const SingleProduct = (props, product) => {
 
 
     const handleConfirmOrder = async (e) => {
+        e.preventDefault();
+
+
         const phone = phoneRef.current.value;
         const address = addressRef.current.value;
 
@@ -51,10 +64,9 @@ const SingleProduct = (props, product) => {
                     alert("Your Order Received, Thank you")
                 }
             })
-        e.target.reset();
-        e.preventDefault();
-        // window.location.reload();
+        // e.target.reset();
         handleClose()
+        history.push(redirectUrl)
     }
 
 
@@ -147,10 +159,16 @@ const SingleProduct = (props, product) => {
                                     <input type="text" className="form-control" placeholder="Type your shipping address" aria-label="Username" aria-describedby="basic-addon1" required ref={addressRef} />
                                 </div>
 
+
+
+
+
+
                                 <Button variant="secondary" onClick={handleClose}>
                                     Close
                                 </Button>
-                                <Button type="submit" variant="primary" className="ms-5" >Confirm Purchase</Button>
+                               {/* <Button type="submit" variant="primary" className="ms-5" >Confirm Purchase</Button> */}
+                               <input type="submit" variant="primary" className="ms-5 btn btn-success" value="Confirm Purchase" />
                             </form>
                         </Modal.Body>
                     </Modal>

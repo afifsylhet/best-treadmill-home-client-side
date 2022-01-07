@@ -1,21 +1,28 @@
 import './Register.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import { useAuth } from '../../utilities/useAuth';
 
 const Register = () => {
     const { setUser, setIsLoading, signUpWithEmail, getNameValue, getEmailValue, getPasswordValue, getConfirmValue, setError, error, createObject, password, confrimValue } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    const redirectUrl = location.state?.from || '/home';
 
     const signUpByEmail = (e) => {
-        if (password !== confrimValue) {
-            e.preventDefault()
-            return alert('password not mached, please try again')
-        }
-        signUpWithEmail()
+        e.preventDefault()
+
+        if (password<100000){
+            return alert('Password must be 6 digit, please try again')
+        } else if (password !== confrimValue) {
+            return alert('Password not mached, please try again')
+        } else{
+            signUpWithEmail()
             .then((result) => {
                 const user = result.user;
                 setUser(user)
                 setError("")
+                history.push(redirectUrl)
                 console.log(user)
             })
             .catch((error) => {
@@ -40,8 +47,9 @@ const Register = () => {
                     }
                 })
         }
-        e.preventDefault()
         e.target.reset();
+        }
+        
     }
 
     return (
@@ -72,7 +80,7 @@ const Register = () => {
                         <div className="mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
 
-                            <input required onBlur={getPasswordValue} type="password" className="form-control" id="exampleInputPassword1" />
+                            <input required onBlur={getPasswordValue} type="password" className="form-control" id="exampleInputPassword1" min="600000" />
                         </div>
 
                         <div className="mb-3">
@@ -84,12 +92,15 @@ const Register = () => {
                     </Form>
 
                     <hr />
-                    <NavLink to="/login">
-                        <h5 className="text-success text-center" style={{ textDecoration: "none" }}>Already have an Account?Please Login</h5>
+                    <center className="text-center"> Already have an account?</center>
+                    <br/>
+                    <NavLink to="/login"  style={{ textDecoration: "none" }}>
+                        <h5 className="text-center btn btn-outline-success w-100">Click Here For Login</h5>
                     </NavLink>
 
                 </div>
             </div>
+            <br/>
         </div >
     );
 };

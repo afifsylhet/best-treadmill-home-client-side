@@ -14,16 +14,14 @@ const QuickAccess = () => {
                     <NavLink to="/about" className="link-style">About Us</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/testimonals" className="link-style">Testimonals</NavLink>
+                    <NavLink to="/products" className="link-style">All Products</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/doctor" className="link-style">Doctors</NavLink>
+                    <NavLink to="/dashboard" className="link-style">Dashboard</NavLink>
                 </li>
+                
                 <li>
                     <NavLink to="/contact" className="link-style">Contact Us</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/undercons" className="link-style">FAQ</NavLink>
                 </li>
             </ul>
         </div>

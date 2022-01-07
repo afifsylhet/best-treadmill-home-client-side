@@ -49,18 +49,15 @@ const useFirebase = () => {
         hello.password = password;
         hello.confirmValue = confrimValue;
         hello.role = "User";
-        return hello;
+       
+            return hello;
+        
     }
-
-
     const passwordSignIn = () => {
         setIsLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
 
     }
-
-
-
     const signUpWithEmail = () => {
         setIsLoading(true)
 

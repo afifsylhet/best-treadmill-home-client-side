@@ -32,9 +32,9 @@ const Login = () => {
     return (
         <div>
             <br />
-
-            <div className="width border border-success p-2">
-                <div>
+                        <div className="width">
+                        {{ error } && <p className="bg-warning p-3">{error}</p>}
+                <div className="width border border-success p-2">
                     < p className="fs-4" > Sign in with Email</p>
                     <Form onSubmit={signInbyPassword}>
                         <div className="mb-3">
@@ -55,11 +55,15 @@ const Login = () => {
                         <button type="sumbit" className="btn btn-success">Sign In</button>
                     </Form>
                     <hr />
-                    <NavLink to="/register">
-                        <h5 className="text-success text-center" style={{ textDecoration: 'none' }}> Are you new user? Please register</h5>
+                     <center className='text-center'> Are you a new user, don't have an account?</center>
+                     <br/>
+
+                    <NavLink to="/register"  style={{ textDecoration: "none" }} >
+                        <h5 className="text-center btn btn-outline-success w-100" > Click Here for Register</h5>
                     </NavLink>
                 </div>
             </div>
+            <br/>
         </div >
     );
 };

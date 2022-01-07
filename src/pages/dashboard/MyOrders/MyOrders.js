@@ -16,7 +16,7 @@ const MyOrders = () => {
             .then(data => setOrders(data))
     }, []);
 
-    const myOrders = orders?.filter(order => order.email === user.email);
+    let myOrders = orders?.filter(order => order.email === user.email);
 
 
 
@@ -35,8 +35,11 @@ const MyOrders = () => {
                     console.log(data)
                     if (data.deleteCount) {
                         alert("Your order removed")
+                        myOrders = myOrders.filter(rest => rest._Id !== order._id);
+
                     }
                 })
+
         }
 
     }
