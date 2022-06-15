@@ -7,7 +7,7 @@ import useAuth from '../../../utilities/useAuth';
 const Navigation = () => {
     const { handleSignout, user } = useAuth();
     return (
-        <Navbar bg="primary" expand="lg">
+        <Navbar expand="lg" style={{ backgroundColor: '#534340' }}>
             <Container fluid>
                 <Navbar.Brand href="#" className="text-white">Best Treadmills Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />

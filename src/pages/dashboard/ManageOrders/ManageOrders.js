@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-// import useAuth from '../../../utilities/useAuth';
+import { Container } from 'react-bootstrap';
 import OffCanvas from '../OffCanvas/OffCanvas';
 
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
 
-    // const { user } = useAuth();
 
     useEffect(() => {
         fetch("https://serene-fortress-61222.herokuapp.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, []);
+    }, [orders]);
 
 
 
@@ -30,9 +28,8 @@ const ManageOrders = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.deleteCount) {
-                        alert("Your order removed")
+                        alert("Your order removed successfuly")
                     }
                 })
         }
@@ -40,59 +37,56 @@ const ManageOrders = () => {
 
     const approveOrder = (order) => {
         const exists = orders.find(pd => pd._id === order._id);
-        console.log(exists)
         const url = 'https://serene-fortress-61222.herokuapp.com/orders';
         fetch(url, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(exists)
         })
-            .then(res => res.json())
-            .then(data => console.log(data))
+        // .then(res => res.json())
+        // .then(data => console.log(data))
     }
 
 
 
     return (
-        <div> <h2 className="text-center my-2 text-success"> Manage All Order Section</h2>
+        <div style={{ backgroundColor: '#F4FCD9', fontFamily: 'raleway' }}>
+            <h2 className="text-center my-2" style={{ color: '#534340' }}> Manage All Order Section</h2>
             <div className="text-center m-3">
                 <OffCanvas></OffCanvas>
             </div>
-            <br />
             <div>
-                {
-                    orders.map(order => <Container key={order._id} className="bg-info p-3 mb-4 rounded-3">
-                        <Row>
-                            <Col>
-                                <p>User Name</p>
-                                <hr />
-                                <p>{order.email.split("@")[0]}</p>
-                            </Col>
-                            <Col>
-                                <p>Product Name</p>
-                                <hr />
-                                <p>{order.name}</p>
-                            </Col>
+                <Container style={{ overflowX: 'scroll' }}>
+                    <table className="w-100" style={{ minWidth: '900px', border: '2px solid #534340' }}>
+                        <tr style={{ padding: "10px", backgroundColor: '#534340', color: '#F4FCD9' }}>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Sl</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >User Name</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Product Name</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Price</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Status</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Remove</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Approve</th>
+                        </tr>
 
-                            <Col>
-                                <p>Price</p>
-                                <hr />
-                                <p>$ {order.price}</p>
-                            </Col>
-                            <Col>
-                                <p>Status</p>
-                                <hr />
-                                <p>{order.status}</p>
-                            </Col>
-                            <Col>
-                                <p onClick={() => removeOrder(order)} className="btn btn-success py-2 px-3"> Remove this order </p>
-                                <p onClick={() => approveOrder(order)} className="btn btn-success py-2 px-3"> Approve this order </p>
-                            </Col>
-                        </Row>
-                    </Container>
-                    )
-                }
+                        {orders.map(order => <tr key={order._id}>
+
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{orders.indexOf(order) + 1}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{order.email.split("@")[0]}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{order.name}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>$ {order.price}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{order.status}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', textAlign: 'center', backgroundColor: "#BB9981", color: '#534340' }}><p onClick={() => removeOrder(order)} className="btn  py-2 px-3" style={{ backgroundColor: '#534340', color: '#F4FCD9' }}> Remove this order </p></td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', textAlign: 'center', backgroundColor: "#BB9981", color: '#534340' }}> <p onClick={() => approveOrder(order)} className="btn  py-2 px-3" style={{ backgroundColor: '#F4FCD9', color: '#534340' }}> Approve this order </p></td>
+                        </tr>
+                        )}
+                    </table>
+                </Container>
+
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
         </div >
     );
 };

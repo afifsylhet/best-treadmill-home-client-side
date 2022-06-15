@@ -24,7 +24,6 @@ const ReviewD = () => {
 
         const newReview = { rating, rev_name, rev_img, rev_address, rev_text }
 
-        console.log(newReview)
 
         fetch('https://serene-fortress-61222.herokuapp.com/reviews', {
             method: 'POST',
@@ -47,7 +46,7 @@ const ReviewD = () => {
 
 
     return (
-        <div>
+        <div style={{ backgroundColor: '#F4FCD9', fontFamily: 'raleway' }}>
             <h2 className="text-center my-2 text-success"> Give a Review, please drop your kind words</h2>
 
             <div className="text-center m-3">
@@ -56,9 +55,9 @@ const ReviewD = () => {
 
 
             <div>
-                <div className="container p-3">
+                <div className="container p-3" style={{ backgroundColor: '#C5D8A4' }}>
                     <div className=" border border-muted border-2 p-3">
-                        <h2 className="text-muted my-3 text-center">Add a new review</h2>
+                        <h2 className="my-3 text-center" style={{ color: '#534340' }}>Add a Review</h2>
                         <p>For providing a review, please fillup all the bellow form. In this form have to need fillup all input section. Please note that if you blank any input , then your data will not sent to server. </p>
 
                         <div>
@@ -82,16 +81,19 @@ const ReviewD = () => {
                                 </div>
                                 <div className="mb-3">
                                     <label for="imgUrl3" className="form-label">Your Kind Words</label>
-                                    <textarea type="text" className="form-control" id="imgUrl3" placeholder="Type your kind words" ref={rev_textRef} required />
+                                    <textarea type="text" className="form-control" rows="4" id="imgUrl3" placeholder="Type your kind words" ref={rev_textRef} required />
                                 </div>
-                                <input type="submit" value="Submit" className="btn btn-secondary" />
+                                <input type="submit" value="Submit" className="btn" style={{ backgroundColor: '#534340', color: '#F4FCD9' }} />
                             </form>
+
                         </div>
                     </div>
 
                 </div>
             </div>
-
+            <br />
+            <br />
+            <br />
         </div>
     );
 };

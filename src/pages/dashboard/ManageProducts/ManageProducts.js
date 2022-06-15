@@ -38,14 +38,16 @@ const ManageProducts = () => {
 
 
     return (
-        <div> <h2 className="text-center my-2 text-success"> Manage All Product</h2>
+        <div style={{ backgroundColor: '#F4FCD9', fontFamily: 'raleway' }}>
+
+            <h2 className="text-center my-2" style={{ color: "#534340" }}> Manage All Product</h2>
             <div className="text-center m-3">
                 <OffCanvas></OffCanvas>
             </div>
             <br />
             <div>
                 {
-                    products.map(order => <Container key={order._id} className="bg-info p-3 mb-4 rounded-3">
+                    products.map(order => <Container key={order._id} className="p-3 mb-4 rounded-3" style={{ backgroundColor: '#C5D8A4', color: '#534340' }}>
                         <Row>
                             <Col>
                                 <p>Product Name</p>
@@ -66,13 +68,16 @@ const ManageProducts = () => {
                             </Col>
 
                             <Col className="d-flex align-items-center justify-content-center">
-                                <p onClick={() => removeProduct(order)} className="btn btn-success py-2 px-3"> Remove this product </p>
+                                <p onClick={() => removeProduct(order)} className="btn py-2 px-3" style={{ backgroundColor: '#534340', color: '#F4FCD9' }}> Remove this product </p>
                             </Col>
                         </Row>
                     </Container>
                     )
                 }
             </div>
+            <br />
+            <br />
+            <br />
         </div >
     );
 };

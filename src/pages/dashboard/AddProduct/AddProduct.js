@@ -57,7 +57,7 @@ const AddProduct = () => {
 
 
     return (
-        <div>
+        <div style={{ backgroundColor: '#F4FCD9' }}>
             <h2 className="text-center my-2 text-success"> Add Product Section</h2>
 
             <div className="text-center m-3">
@@ -66,9 +66,9 @@ const AddProduct = () => {
 
 
             <div>
-                <div className="container p-3">
+                <div className="container p-3" style={{ backgroundColor: '#BB9981' }}>
                     <div className=" border border-muted border-2 p-3">
-                        <h2 className="text-muted my-3 text-center">Add a new product</h2>
+                        <h2 className="my-3 text-center" style={{ color: '#534340' }}>Add a new product</h2>
                         <p>For adding a product, please fillup all the bellow form. In this form have to need fillup all input section. Please note that if you blank any input , then your data will not sent to server. </p>
 
                         <div>
@@ -100,7 +100,7 @@ const AddProduct = () => {
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="imgUrl6" className="form-label">Despriction of this product</label>
-                                    <textarea type="text" className="form-control" id="imgUrl6" placeholder="Type main discription of ths product" ref={disRef} required />
+                                    <textarea type="text" className="form-control" rows="4" id="imgUrl6" placeholder="Type main discription of ths product" ref={disRef} required />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="imgUrl7" className="form-label">Key fetures 1</label>
@@ -126,14 +126,15 @@ const AddProduct = () => {
                                     <label htmlFor="imgUr22" className="form-label">Key fetures 6</label>
                                     <input type="text" className="form-control" id="imgUr22" placeholder="Type a key feature" ref={glance_6Ref} required />
                                 </div>
-                                <input type="submit" value="Submit" className="btn btn-secondary" />
+                                <input type="submit" value="Submit" className="btn" style={{ backgroundColor: '#534340', color: '#F4FCD9' }} />
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
-
+            <br />
+            <br />
+            <br />
         </div>
     );
 };

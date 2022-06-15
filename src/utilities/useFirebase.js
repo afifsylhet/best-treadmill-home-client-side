@@ -49,9 +49,9 @@ const useFirebase = () => {
         hello.password = password;
         hello.confirmValue = confrimValue;
         hello.role = "User";
-       
-            return hello;
-        
+
+        return hello;
+
     }
     const passwordSignIn = () => {
         setIsLoading(true)

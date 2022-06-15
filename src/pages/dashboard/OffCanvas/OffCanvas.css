@@ -1,4 +1,12 @@
 
-.manu:hover{
-    background-color: rgba(62, 62, 248, 0.534);
+
+#hello {
+    background-color: #bb9981;
+    color:#F4FCD9;
+    font-weight: 500;
+    font-size: larger;
+}
+#hello:hover{
+    background-color: #534340;
+    color:#F4FCD9;
 }

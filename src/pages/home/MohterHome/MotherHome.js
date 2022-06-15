@@ -8,7 +8,7 @@ import Reviews from '../Reviews/Reviews';
 
 const MotherHome = () => {
     return (
-        <div className="bg-light">
+        <div style={{ backgroundColor: '#F4FCD9' }}>
             <Banner></Banner>
 
             <div className="mx-1">

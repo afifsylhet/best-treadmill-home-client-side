@@ -1,7 +1,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import useAuth from '../../../utilities/useAuth';
 import OffCanvas from '../OffCanvas/OffCanvas';
 
@@ -14,7 +14,7 @@ const MyOrders = () => {
         fetch("https://serene-fortress-61222.herokuapp.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, []);
+    }, [orders]);
 
     let myOrders = orders?.filter(order => order.email === user.email);
 
@@ -47,44 +47,41 @@ const MyOrders = () => {
 
 
     return (
-        <div> <h2 className="text-center my-2 text-success"> My Order Section</h2>
+        <div style={{ backgroundColor: 'F4FCD9', fontFamily: 'raleway' }}>
+            <h2 className="text-center my-2" style={{ color: '#534340' }}> My Order Section</h2>
             <div className="text-center m-3">
                 <OffCanvas></OffCanvas>
             </div>
-            <br />
             <div>
-                {
-                    myOrders.map(order => <Container key={order._id} className="bg-info p-3 mb-4 rounded-3">
-                        <Row>
-                            <Col>
-                                <p>User Name</p>
-                                <hr />
-                                <p>{user.email.split("@")[0]}</p>
-                            </Col>
-                            <Col>
-                                <p>Product Name</p>
-                                <hr />
-                                <p>{order.name}</p>
-                            </Col>
+                <Container style={{ overflowX: 'scroll' }}>
+                    <table className="w-100" style={{ minWidth: '900px', border: '2px solid #534340' }}>
+                        <tr style={{ padding: "10px", backgroundColor: '#534340', color: '#F4FCD9' }}>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Sl</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >User Name</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Product Name</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Price</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Status</th>
+                            <th style={{ padding: '10px', textAlign: 'center', border: '2px solid #534340' }} >Remove</th>
+                        </tr>
 
-                            <Col>
-                                <p>Price</p>
-                                <hr />
-                                <p>$ {order.price}</p>
-                            </Col>
-                            <Col>
-                                <p>Status</p>
-                                <hr />
-                                <p>{order.status}</p>
-                            </Col>
-                            <Col className="d-flex align-items-center justify-content-center">
-                                <p onClick={() => removeOrder(order)} className="btn btn-success py-2 px-3"> Remove this order </p>
-                            </Col>
-                        </Row>
-                    </Container>
-                    )
-                }
+                        {myOrders.map(order => <tr key={order._id}>
+
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{myOrders.indexOf(order) + 1}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{user.email.split("@")[0]}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{order.name}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>$ {order.price}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', backgroundColor: "#BB9981", color: '#534340' }}>{order.status}</td>
+                            <td style={{ padding: '10px', border: '2px solid #534340', textAlign: 'center', backgroundColor: "#BB9981", color: '#534340' }}><p onClick={() => removeOrder(order)} className="btn  py-2 px-3" style={{ backgroundColor: '#534340', color: '#F4FCD9' }}> Remove this order </p></td>
+                        </tr>
+                        )}
+                    </table>
+                </Container>
+
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
         </div >
     );
 };

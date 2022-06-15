@@ -6,7 +6,7 @@ import OffCanvas from '../OffCanvas/OffCanvas';
 const Dashboard = () => {
     return (
         <div>
-            <h2 className="text-center my-2 text-success">Welcome to Best Treadmill Dashboard</h2>
+            <h2 className="text-center my-2" style={{ color: '#534340' }}>Welcome to Best Treadmill Dashboard</h2>
             <div className="text-center m-3">
                 <OffCanvas></OffCanvas>
             </div>

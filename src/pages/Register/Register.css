@@ -3,3 +3,9 @@
     width: 350px;
     margin:auto;
 }
+
+.borderColor{
+    border: 2px solid #534340;
+    background-color: #C5D8A4;
+}
+

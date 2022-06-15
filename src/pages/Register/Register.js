@@ -12,53 +12,53 @@ const Register = () => {
     const signUpByEmail = (e) => {
         e.preventDefault()
 
-        if (password<100000){
+        if (password < 100000) {
             return alert('Password must be 6 digit, please try again')
         } else if (password !== confrimValue) {
             return alert('Password not mached, please try again')
-        } else{
+        } else {
             signUpWithEmail()
-            .then((result) => {
-                const user = result.user;
-                setUser(user)
-                setError("")
-                history.push(redirectUrl)
-                console.log(user)
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                setError(errorMessage)
-            })
-            .finally(() => setIsLoading(false));
-
-        const userForBackEnd = createObject();
-
-        if (!error) {
-            fetch('https://serene-fortress-61222.herokuapp.com/users', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userForBackEnd)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        console.log(data)
-                        alert(" Congratulations!!! Your account created and data saved to database.")
-                    }
+                .then((result) => {
+                    const user = result.user;
+                    setUser(user)
+                    setError("")
+                    history.push(redirectUrl)
+                    console.log(user)
                 })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    setError(errorMessage)
+                })
+                .finally(() => setIsLoading(false));
+
+            const userForBackEnd = createObject();
+
+            if (!error) {
+                fetch('https://serene-fortress-61222.herokuapp.com/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userForBackEnd)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            console.log(data)
+                            alert(" Congratulations!!! Your account created and data saved to database.")
+                        }
+                    })
+            }
+            e.target.reset();
         }
-        e.target.reset();
-        }
-        
+
     }
 
     return (
-        <div>
+        <div style={{ backgroundColor: '#F4FCD9', fontFamily: "raleway" }}>
             <br />
 
             <div className="width ">
-                {{ error } && <p className="bg-warning p-3">{error}</p>}
-                <div className=" border border-success p-2">
+                {{ error } && <p className="p-3" style={{ backgroundColor: '#534340', color: '#F4FCD9', fontWeight: '500' }}>{error}</p>}
+                <div className="p-2 borderColor">
                     < p className="fs-4" > Create Account with Email</p>
                     <Form onSubmit={signUpByEmail}>
                         <div className="mb-3">
@@ -88,19 +88,21 @@ const Register = () => {
 
                             <input required onBlur={getConfirmValue} type="password" className="form-control" id="exampleInputPassword2" />
                         </div>
-                        <input type="submit" value="Create Account" className="btn btn-success" />
+                        <input type="submit" value="Create Account" className="btn" style={{ backgroundColor: '#534340', color: '#F4FCD9', fontWeight: '500' }} />
                     </Form>
 
                     <hr />
                     <center className="text-center"> Already have an account?</center>
-                    <br/>
-                    <NavLink to="/login"  style={{ textDecoration: "none" }}>
-                        <h5 className="text-center btn btn-outline-success w-100">Click Here For Login</h5>
+                    <br />
+                    <NavLink to="/login" style={{ textDecoration: "none" }}>
+                        <h5 className="text-center btn w-100" style={{ backgroundColor: '#534340', color: '#F4FCD9', fontWeight: '500' }}>Click Here For Login</h5>
                     </NavLink>
 
                 </div>
             </div>
-            <br/>
+            <br />
+            <br />
+            <br />
         </div >
     );
 };

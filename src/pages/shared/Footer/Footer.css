@@ -1,9 +1,9 @@
 
 .size{
     height: 75px;
-    width: 85px;
-    color: lightslategray;
-    background-color: white;
+    width: 75px;
+    color: #F4FCD9;
+    background-color:#BB9981;
     margin:5px;
     padding: 15px;
     border-radius: 50%;
@@ -11,7 +11,8 @@
 }
 
 .size:hover{
-    color: wheat;
-    background-color: blueviolet;
+    color: #BB9981;
+    background-color: #F4FCD9;
+    cursor: pointer;
 }
 
